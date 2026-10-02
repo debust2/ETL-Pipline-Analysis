@@ -8,7 +8,7 @@ services:
       MINIO_ROOT_USER: "my_user_name"
       MINIO_ROOT_PASSWORD: "my_password"
     command:
-      server /data --console-address ":9001"
+      ["server", "/data", "--console-address", ":9001"]
     volumes:
       - minio_data:/data
   
