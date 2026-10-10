@@ -60,3 +60,16 @@ def write_s3_csv(s3_client, bucket_name:str, data: list[dict], key_name: str):
                           Key = key_name,
                           Body = df.encode("utf-8"),
                           ContentType = "text/csv")
+
+
+def download_file(s3_client, bucket_name:str, key_name: str, filename: str):
+    try:
+        s3_client.download_file(
+            Bucket = bucket_name,
+            Key = key_name,
+            Filename = filename
+        )
+        print(f"Файл {key_name} успешно загружен в директорию")
+    except Exception as e:
+        print(f"Произошла ошибка {e} при загрузке файла")
+
